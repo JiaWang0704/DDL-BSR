@@ -12,12 +12,14 @@ scipy 1.10.1
 ## Test
 ```git clone https://github.com/JiaWang0704/DDL-BSR.git
 cd DDL-BSR
-python test.py -opt=options/test/test_setting2_stage3_x4.yml```
+python test.py -opt=options/test/test_setting2_stage3_x4.yml
+```
 
 ## Train
 ```git clone https://github.com/JiaWang0704/DDL-BSR.git
 cd DDL-BSR
-python train.py -opt=options/train/train_setting2_stage3_x4.yml```
+python train.py -opt=options/train/train_setting2_stage3_x4.yml
+```
 
 
 ## Citation
@@ -28,6 +30,7 @@ If you use this code or use our pre-trained weights for your research, please ci
   journal={IEEE Transactions on Neural Networks and Learning Systems},
   year={2024},
   publisher={IEEE}
-}```
+}
+```
 
 
