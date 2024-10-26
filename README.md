@@ -5,8 +5,11 @@ This paper has been accepted by TNNLS2024! [paper link](https://ieeexplore.ieee.
 
 ## Requirement
 python 3.8
+
 torch 2.1.0
+
 torchvision 0.16
+
 scipy 1.10.1
 
 ## Test
