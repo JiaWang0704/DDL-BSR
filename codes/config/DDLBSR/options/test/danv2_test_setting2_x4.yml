@@ -1,0 +1,56 @@
+name: DANx4_setting2
+suffix: ~  # add suffix to saved images
+model: danv2
+distortion: sr
+scale: 4
+ksize: 31
+crop_border: ~  # crop border when evaluation. If None(~), crop the scale pixels
+gpu_ids: [0]
+pca_matrix_path: ../../../pca_matrix/DCLS/pca_aniso_matrix_x4.pth
+
+datasets:
+  # test0:
+  #   name: Set5
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/test/gt
+  #   dataroot_LQ: /data/wangjia/BSR/test/test/lr
+
+  test0:
+    name: Set5
+    mode: LQGT
+    dataroot_GT: /data/wangjia/BSR/test/Setting2/Set5/HR/x4
+    dataroot_LQ: /data/wangjia/BSR/test/Setting2/Set5/LRblur/x4
+#   test0:
+#     name: U100
+#     mode: LQGT
+#     dataroot_GT: /data/wangjia/BSR/test/Setting2/U100/HR/x4
+#     dataroot_LQ: /data/wangjia/BSR/test/Setting2/U100/LRblur/x4
+
+  # test0:
+  #   name: B100
+  #   mode: LQGT
+  #   dataroot_GT: /userHome/guest/wangjia/blindsr/util/B100-GT
+  #   dataroot_LQ: /userHome/guest/wangjia/blindsr/util/B100-lr
+
+  # test4:
+  #   name: DIV2KRK
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/DIV2KRK/gt
+  #   dataroot_LQ: /data/wangjia/BSR/test/DIV2KRK/lr_x4
+
+
+
+#### network structures
+network_G:
+  which_model_G: DAN
+  setting:
+    nf: 64
+    nb: 10
+    ng: 5
+    input_para: 15
+    loop: 4
+    kernel_size: 31
+
+#### path
+path:
+  pretrain_model_G: /userHome/guest/wangjia/blindsr/DAN/checkpoints/DANv2/danv2_x4_setting2.pth

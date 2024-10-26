@@ -1,0 +1,1260 @@
+24-10-26 14:17:00.797 - INFO:   name: D2SRx2_setting2
+  suffix: None
+  model: blind
+  distortion: sr
+  scale: 2
+  ksize: 11
+  crop_border: None
+  gpu_ids: [2]
+  pca_matrix_path: ../../../pca_matrix/DCLS/pca_aniso_matrix_x2.pth
+  datasets:[
+    test0:[
+      name: real_image
+      mode: LQ
+      dataroot_LQ: /data/wangjia/BSR/test/test/lr
+      phase: test0
+      scale: 2
+      data_type: img
+    ]
+  ]
+  network_G:[
+    which_model_G: D2SR_s3
+    setting:[
+      scale: 2
+      ksize: 11
+    ]
+  ]
+  path:[
+    pretrain_model_G: /userHome/guest/wangjia/blindsr/DDL-BSR/pretrained_model/D2SR-x2-1129.pth
+    root: /userHome/guest/wangjia/blindsr/DDL-BSR
+    results_root: /userHome/guest/wangjia/blindsr/DDL-BSR/results/DDLBSR/D2SRx2_setting2
+    log: /userHome/guest/wangjia/blindsr/DDL-BSR/results/DDLBSR/D2SRx2_setting2
+  ]
+  is_train: False
+
+24-10-26 14:17:00.849 - INFO: Dataset [LQDataset - real_image] is created.
+24-10-26 14:17:00.850 - INFO: Number of test images in [real_image]: 100
+24-10-26 14:17:02.658 - INFO: Network G structure: DataParallel - D2SR_s3, with parameters: 8,721,256
+24-10-26 14:17:02.658 - INFO: D2SR_s3(
+  (fea_extra): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (dpnet): Encoder(
+    (encoder): Sequential(
+      (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+      (4): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (5): ReLU(inplace=True)
+      (6): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (7): ReLU(inplace=True)
+      (8): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (9): ReLU(inplace=True)
+      (10): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (11): ReLU(inplace=True)
+      (12): Conv2d(64, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (13): ReLU(inplace=True)
+    )
+  )
+  (bottle): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.1, inplace=True)
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): LeakyReLU(negative_slope=0.1, inplace=True)
+    (4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (5): LeakyReLU(negative_slope=0.1, inplace=True)
+    (6): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (ddlnet): DDLNet(
+    (conv_head): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (blocks): Sequential(
+      (0): CascadeResBlock(
+        (f): Sequential(
+          (0): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+          (1): ReLU(inplace=True)
+          (2): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+        )
+      )
+      (1): CascadeResBlock(
+        (f): Sequential(
+          (0): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+          (1): ReLU(inplace=True)
+          (2): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+        )
+      )
+      (2): CascadeResBlock(
+        (f): Sequential(
+          (0): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+          (1): ReLU(inplace=True)
+          (2): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+        )
+      )
+      (3): CascadeResBlock(
+        (f): Sequential(
+          (0): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+          (1): ReLU(inplace=True)
+          (2): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+        )
+      )
+      (4): CascadeResBlock(
+        (f): Sequential(
+          (0): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+          (1): ReLU(inplace=True)
+          (2): ResBlock(
+            (f): Sequential(
+              (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): ReLU(inplace=True)
+              (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (3): ReLU(inplace=True)
+            )
+          )
+        )
+      )
+    )
+    (conv_tail): Conv2d(64, 121, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (conv_tail2): Conv2d(121, 121, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (softmax): Softmax(dim=1)
+  )
+  (c_conv): CorrectKernelBlock(
+    (f): Sequential(
+      (0): Conv2d(121, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+      (4): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (5): ReLU(inplace=True)
+    )
+  )
+  (G): SR(
+    (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (body): Sequential(
+      (0): FUSION(
+        (body): Sequential(
+          (0): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (1): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (2): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (3): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (4): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+        )
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+      (1): FUSION(
+        (body): Sequential(
+          (0): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (1): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (2): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (3): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (4): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+        )
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+      (2): FUSION(
+        (body): Sequential(
+          (0): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (1): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (2): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (3): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (4): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+        )
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+      (3): FUSION(
+        (body): Sequential(
+          (0): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (1): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (2): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (3): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (4): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+        )
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+      (4): FUSION(
+        (body): Sequential(
+          (0): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (1): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (2): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (3): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+          (4): Gather(
+            (dab): KOALAModlule(
+              (conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU(inplace=True)
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (3): ReLU(inplace=True)
+              )
+              (mult_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              )
+              (loc_filter_conv): Sequential(
+                (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (1): ReLU()
+                (2): Conv2d(64, 49, kernel_size=(1, 1), stride=(1, 1))
+                (3): KernelNormalize()
+              )
+              (local_conv): LocalConvFeat(
+                (image_patches): ExtractSplitStackImagePatches()
+              )
+            )
+            (caamb): CAAMB(
+              (daam1): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (daam2): CAAMSFT(
+                (SFT_scale_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_scale_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+                (SFT_shift_conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+              )
+              (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (relu): ReLU(inplace=True)
+            )
+          )
+        )
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+    )
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (tail): Sequential(
+      (0): Upsampler(
+        (0): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): PixelShuffle(upscale_factor=2)
+      )
+      (1): Conv2d(64, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (linear): Linear(in_features=121, out_features=11, bias=True)
+  (linear2): Linear(in_features=11, out_features=4, bias=True)
+  (relu): ReLU(inplace=True)
+)
+24-10-26 14:17:02.660 - INFO: Loading model for G [/userHome/guest/wangjia/blindsr/DDL-BSR/pretrained_model/D2SR-x2-1129.pth] ...
+24-10-26 14:17:03.071 - INFO: Model [B_Model] is created.
+24-10-26 14:17:03.071 - INFO: 
+Testing [real_image]...

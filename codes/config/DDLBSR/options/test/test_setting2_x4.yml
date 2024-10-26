@@ -1,0 +1,69 @@
+name: DCLSx4_setting2
+suffix: ~  # add suffix to saved images
+model: dcls
+distortion: sr
+scale: 4
+crop_border: ~  # crop border when evaluation. If None(~), crop the scale pixels
+gpu_ids: [0]
+pca_matrix_path: ../../../pca_matrix/DCLS/pca_aniso_matrix_x4.pth
+
+datasets:
+
+  test0:
+    name: Set5
+    mode: LQGT
+    dataroot_GT: /data/wangjia/BSR/test/Setting2/Set5/HR/x4
+    dataroot_LQ: /data/wangjia/BSR/test/Setting2/Set5/LRblur/x4
+
+#### network structures
+network_G:
+  which_model_G: DCLS
+  setting:
+    nf: 64
+    nb: 10
+    ng: 5
+    input_para: 256
+    kernel_size: 31
+
+#### path
+path:
+  pretrain_model_G: /userHome/guest/wangjia/blindsr/DCLS-SR/pretrained_models/DCLSx4_setting2.pth
+
+
+
+  # test0:
+  #   name: Set5
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/Setting2/Set5/HR/x4
+  #   dataroot_LQ: /data/wangjia/BSR/test/Setting2/Set5/LRblur/x4
+
+  # test1:
+  #   name: Set14
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/Setting2/Set14/HR/x4
+  #   dataroot_LQ: /data/wangjia/BSR/test/Setting2/Set14/LRblur/x4
+
+  # test2:
+  #   name: U100
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/Setting2/U100/HR/x4
+  #   dataroot_LQ: /data/wangjia/BSR/test/Setting2/U100/LRblur/x4
+
+  # test3:
+  #   name: B100
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/Setting2/B100/HR/x4
+  #   dataroot_LQ: /data/wangjia/BSR/test/Setting2/B100/LRblur/x4
+
+  # test4:
+  #   name: M100
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/noise/15/Set5/HR/x4
+  #   dataroot_LQ: /data/wangjia/BSR/test/noise/15/Set5/LRblur/x4
+
+
+  # test4:
+  #   name: DIV2KRK
+  #   mode: LQGT
+  #   dataroot_GT: /data/wangjia/BSR/test/DIV2KRK/gt
+  #   dataroot_LQ: /data/wangjia/BSR/test/DIV2KRK/lr_x4

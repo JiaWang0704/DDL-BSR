@@ -1,0 +1,37 @@
+24-10-26 14:21:57.396 - INFO:   name: D2SRx4_setting2_cal_dasft_ssmi
+  suffix: None
+  model: blind
+  distortion: sr
+  scale: 4
+  ksize: 31
+  crop_border: None
+  gpu_ids: [2]
+  pca_matrix_path: ../../../pca_matrix/DCLS/pca_aniso_matrix_x4.pth
+  datasets:[
+    test0:[
+      name: Set5
+      mode: LQGT
+      dataroot_GT: /data/wangjia/BSR/test/Setting2/Set5/HR/x4
+      dataroot_LQ: /data/wangjia/BSR/test/Setting2/Set5/LRblur/x4
+      phase: test0
+      scale: 4
+      data_type: img
+    ]
+  ]
+  network_G:[
+    which_model_G: D2SR_s3
+    setting:[
+      scale: 4
+      ksize: 31
+    ]
+  ]
+  path:[
+    pretrain_model_G: /userHome/guest/wangjia/blindsr/DDL-BSR/pretrained_model/D2SR-x4-0905.pth
+    root: /userHome/guest/wangjia/blindsr/DDL-BSR
+    results_root: /userHome/guest/wangjia/blindsr/DDL-BSR/results/DDLBSR/D2SRx4_setting2_cal_dasft_ssmi
+    log: /userHome/guest/wangjia/blindsr/DDL-BSR/results/DDLBSR/D2SRx4_setting2_cal_dasft_ssmi
+  ]
+  is_train: False
+
+24-10-26 14:21:57.399 - INFO: Dataset [LQGTDataset - Set5] is created.
+24-10-26 14:21:57.400 - INFO: Number of test images in [Set5]: 5
