@@ -13,6 +13,7 @@ torchvision 0.16
 scipy 1.10.1
 
 ## Test
+* When loading the pre-training parameters, you need to select the network framework, which is noted in the comments section of this file ‘codes/config/DDLBSR/models/modules/__init__.py’
 ```git clone https://github.com/JiaWang0704/DDL-BSR.git
 cd DDL-BSR
 python test.py -opt=options/test/test_setting2_stage3_x4.yml
